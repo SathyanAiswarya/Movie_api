@@ -62,3 +62,7 @@ let topMovies =
 ];
 
 app.use (morgan('common'));
+
+app.get('/',(request,response)=>{
+     response.send('Welcome to MyFlix');
+ });
