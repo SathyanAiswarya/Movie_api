@@ -70,3 +70,5 @@ app.get('/topmovies',(request,response)=>{
     response.json(topMovies);
 });
 
+app.use('/', express.static('public'));
+
