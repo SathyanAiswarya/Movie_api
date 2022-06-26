@@ -66,3 +66,7 @@ app.use (morgan('common'));
 app.get('/',(request,response)=>{
      response.send('Welcome to MyFlix');
  });
+app.get('/topmovies',(request,response)=>{
+    response.json(topMovies);
+});
+
