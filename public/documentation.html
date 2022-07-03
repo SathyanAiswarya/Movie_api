@@ -8,6 +8,129 @@
 <body>
     <header>
         <h1> Documentation</h1>
+        <div class="restapi_table">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="restapitable_item">Sl.no</th>
+                        <th class="restapitable_item"> Request </th>
+                        <th class="restapitable_item"> The endpoint URL </th>
+                        <th class="restapitable_item"> Description </th>
+                        <th class="restapitable_item"> Method </th>
+                        <th class="restapitable_item"> Format of requested data </th>
+                        <th class="restapitable_item"> Format of response data </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="restapitable_item"> 1</td>
+                        <td class="restapitable_item"> All movies to user </td>
+                        <td class="restapitable_item"> /movies </td>
+                        <td class="restapitable_item"> Return all the movies with their details(description, genre and director) </td>
+                        <td class="restapitable_item"> GET </td>
+                        <td class="restapitable_item"> - </td>
+                        <td class="restapitable_item"> JSON </td>
+                    </tr>
+                    <tr>
+                        <td class="restapitable_item"> 2 </td>
+                        <td class="restapitable_item"> Return data about a single movie by title to the user </td>
+                        <td class="restapitable_item"> /movies/:name </td>
+                        <td class="restapitable_item"> It will return all the details about the requested Movie </td>
+                        <td class="restapitable_item"> GET </td>
+                        <td class="restapitable_item"> - </td>
+                        <td class="restapitable_item"> JSON </td>
+
+                    </tr>
+                    <tr>
+                        <td class="restapitable_item"> 3 </td>
+                        <td class="restapitable_item"> Return data about a genre by title </td>
+                        <td class="restapitable_item"> /movies/genre/:genre </td>
+                        <td class="restapitable_item"> It will return the description about the requested genre </td>
+                        <td class="restapitable_item"> GET </td>
+                        <td class="restapitable_item"> - </td>
+                        <td class="restapitable_item"> JSON </td>
+
+                    </tr>
+                    <tr>
+                        <td class="restapitable_item"> 4 </td>
+                        <td class="restapitable_item"> Return data about a director </td>
+                        <td class="restapitable_item"> /movies/director/:nameofthedirector </td>
+                        <td class="restapitable_item"> It will return all the details about the requested director </td>
+                        <td class="restapitable_item"> GET </td>
+                        <td class="restapitable_item"> - </td>
+                        <td class="restapitable_item"> JSON </td>
+
+                    </tr>
+                    <tr>
+                        <td class="restapitable_item"> 5 </td>
+                        <td class="restapitable_item"> Allow new users to register </td>
+                        <td class="restapitable_item"> /users </td>
+                        <td class="restapitable_item"> Update the details of a new user </td>
+                        <td class="restapitable_item"> POST </td>
+                        <td class="restapitable_item"> JSON : 
+                            { "name" : "Mark", "favoritemovie":"Spiderhead"}
+                         </td>
+                        <td class="restapitable_item"> JSON 
+                            {
+                                "name": "Mark",
+                                "favoritemovie": "Spiderhead",
+                                "id": "857b9167-04d8-42dd-92f2-ec826ea738b6"
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="restapitable_item"> 6 </td>
+                        <td class="restapitable_item"> Allow users to update their user info</td>
+                        <td class="restapitable_item"> /users/:id </td>
+                        <td class="restapitable_item"> It will update the username of the user of the requested id </td>
+                        <td class="restapitable_item"> PUT </td>
+                        <td class="restapitable_item"> JSON : 
+                            { "name" : "Aiswarya Sathyan" }</td>
+                        <td class="restapitable_item"> JSON
+                            {
+                                "id": 1,
+                                "userName": "Aiswarya Sathyan",
+                                "favoriteMovie": [
+                                    "Blasted"
+                                ]
+                            }
+                         </td>
+                    </tr>
+                    <tr>
+                        <td class="restapitable_item"> 7 </td>
+                        <td class="restapitable_item"> To add a movie to their list of favorites </td>
+                        <td class="restapitable_item"> /users/:username </td>
+                        <td class="restapitable_item"> Allow users to add their favorite movie to the list </td>
+                        <td class="restapitable_item"> POST </td>
+                        <td class="restapitable_item"> JSON{
+                            "favoriteMovie" : "spiderhead"
+                        }
+                     </td>
+                        <td class="restapitable_item"> response text </td>
+                    </tr>
+                    <tr>
+                        <td class="restapitable_item"> 8 </td>
+                        <td class="restapitable_item"> To add a movie to their list of favorites </td>
+                        <td class="restapitable_item"> /users/:id/:movietitle </td>
+                        <td class="restapitable_item"> Allow users to delete their favorite movie from the list </td>
+                        <td class="restapitable_item"> DELETE </td>
+                        <td class="restapitable_item"> - </td>
+                        <td class="restapitable_item"> Response text </td>
+
+                    </tr>
+                    <tr>
+                        <td class="restapitable_item"> 9 </td>
+                        <td class="restapitable_item"> Existing users to deregister </td>
+                        <td class="restapitable_item"> //users/:id </td>
+                        <td class="restapitable_item"> Allowing a user to deregister </td>
+                        <td class="restapitable_item"> DELETE </td>
+                        <td class="restapitable_item"> - </td>
+                        <td class="restapitable_item"> response text </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </header>
     <script src="../js/test.js"></script>
 </body>
