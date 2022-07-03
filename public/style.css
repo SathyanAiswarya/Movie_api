@@ -1,0 +1,25 @@
+td,
+th {
+  padding: 20px;
+  text-align: left;
+  border-bottom: 1px solid black;
+}
+
+th {
+  text-align: center;
+}
+
+table,
+th,
+td {
+  border: 1px solid;
+}
+table {
+    border-collapse: collapse;
+  }
+.restapi_table {
+    margin: 15px;
+    padding: 10px;
+    display: flex;
+    justify-content: center
+}
