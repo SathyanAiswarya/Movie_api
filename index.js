@@ -3,6 +3,7 @@ const express = require('express'),
   morgan = require('morgan'),
   bodyParser = require('body-parser'),
   uuid = require('uuid');
+app.use(bodyParser.json());
 
 let users = [
   {
