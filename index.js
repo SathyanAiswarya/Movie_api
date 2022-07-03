@@ -155,9 +155,6 @@ app.get('/movies', (request, response) => {
 
 
 
-app.use((error, request, response, next) => {
-  console.error(error.stack);
-  response.status(500).send('Something broke!');
 app.get('/documentation', (request, response) => {                  
   response.sendFile('public/documentation.html', { root: __dirname });
 });
