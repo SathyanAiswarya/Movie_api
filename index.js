@@ -180,6 +180,20 @@ app.get('/movies/genre/:genre', (request, response) => {
   }
 });
 
+//-------------Return data about a director ---------------------------
+
+app.get('/movies/director/:nameofthedirector', (request, response) => {
+  const requestedDirectorName = request.params.nameofthedirector;
+  const directorName = topMovies.find((movie) => {
+    return movie.director.name == requestedDirectorName
+  }).director;
+  if (directorName) {
+    response.status(200).json(directorName.about);
+  }
+  else {
+    response.status(404).send("Result not Found");
+  }
+});
 
 //---------------------- Allow new users to register -------------------------------------------
 app.post('/users', (request, response) => {
