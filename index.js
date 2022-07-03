@@ -152,8 +152,106 @@ app.get('/movies', (request, response) => {
   response.status(200).json(topMovies);
 });
 
+//---------------------Return data about a single movie by title to the user------------
+app.get('/movies/:name', (request, response) => {
+  const requestedMovieName = request.params.name;
+  const movieName = topMovies.find((movie) => {
+    return movie.name == requestedMovieName
+  });
+  if (movieName) {
+    response.status(200).json(movieName);
+  }
+  else {
+    response.status(404).send("Result not Found");
+  }
+});
 
 
+//---------------------- Allow new users to register -------------------------------------------
+app.post('/users', (request, response) => {
+  const newUser = request.body
+  if (newUser.name) {
+    newUser.id = uuid.v4();
+    users.push(newUser);
+    response.status(200).json(newUser);
+  }
+  else {
+    response.status(200).json('Please enter the name');
+  }
+});
+
+//----------------------- Allow users to update their user info (username)----------------
+app.put('/users/:id', (request, response) => {
+  const requestedId = request.params.id;
+  const updatedUser = request.body;
+  const user = users.find((user) => {
+    return user.id == requestedId
+  });
+  if (user) {
+    user.userName = updatedUser.name;
+    response.status(200).json(user);
+  }
+  else {
+    response.status(400).send('No Results');
+  }
+});
+
+//-------------------------------------Allow users to add a movie to their list of favorites ------
+
+app.post('/users/:username', (request, response) => {
+  const requestedUserName = request.params.username;
+  const updatedMovieList = request.body;
+  const user = users.find((user) => {
+    return user.userName == requestedUserName
+  });
+  if (user) {
+    user.favoriteMovie.push(updatedMovieList);
+    response.status(200).send(updatedMovieList.favoriteMovie + ' ' + 'has been added to ' + user.userName)
+  }
+  else {
+    response.status(400).send('No Results')
+
+  }
+});
+
+//------------------ Allow users to remove a movie from their list of favorites--------
+
+app.delete('/users/:id/:movietitle', (request, response) => {
+  const requestedMovieTitle = request.params.movietitle;
+  const requestedUserId = request.params.id;
+  const user = users.find((user) => {
+    return user.id == requestedUserId
+  });
+  if (user && user.favoriteMovie.includes(requestedMovieTitle)) {
+    
+    user.favoriteMovie = user.favoriteMovie.filter((title) => title != requestedMovieTitle);
+   response.status(200).send(`${requestedMovieTitle} has been removed from ${user.userName}`)
+  }
+  else {
+    response.status(400).send('No Results')
+
+  }
+});
+//---------- to get all the users ---------------
+app.get('/users', (request, response) => {
+  response.status(200).json(users);
+});
+
+//--------------- Allow existing users to deregister  -------------------------
+app.delete('/users/:id', (request, response) => {
+  const requestedUserId = request.params.id;
+  const user = users.find((user) => {
+    return user.id == requestedUserId;
+  })
+  if (user) {
+    const newUser = users.filter((userObj) => userObj.id != requestedUserId);
+    users = newUser;
+    response.status(200).send(`User with the id ${requestedUserId} has been removed`);
+  }
+  else {
+    response.status(404).send('Search result not found');
+  }
+});
 
 app.get('/documentation', (request, response) => {                  
   response.sendFile('public/documentation.html', { root: __dirname });
