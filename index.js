@@ -166,6 +166,20 @@ app.get('/movies/:name', (request, response) => {
   }
 });
 
+//--------Return data about a genre (description) by name/title ----------------
+app.get('/movies/genre/:genre', (request, response) => {
+  const requestedGenre = request.params.genre;
+  const genreName = topMovies.find((movie) => {
+    return movie.genre.name == requestedGenre
+  }).genre;
+  if (genreName) {
+    response.status(200).json(genreName.definition);
+  }
+  else {
+    response.status(404).send("Result not Found");
+  }
+});
+
 
 //---------------------- Allow new users to register -------------------------------------------
 app.post('/users', (request, response) => {
