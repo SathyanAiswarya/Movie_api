@@ -147,8 +147,9 @@ let topMovies =
 app.get('/', (request, response) => {
   response.send('Welcome to MyFlix');
 });
-app.get('/topmovies', (request, response) => {
-  response.json(topMovies);
+//------------------------------All movies to user------------------------------
+app.get('/movies', (request, response) => {
+  response.status(200).json(topMovies);
 });
 
 app.use('/', express.static('public'));
