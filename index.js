@@ -153,9 +153,6 @@ app.get('/movies', (request, response) => {
 });
 
 
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
 
 
 app.use((error, request, response, next) => {
