@@ -5,6 +5,18 @@ const express = require('express'),
   methodOverride = require('method-override');
   uuid = require('uuid');
 
+let users = [
+  {
+    id: 1,
+    userName: 'Aishu',
+    favoriteMovie: ['Blasted']
+  },
+  {
+    id: 2,
+    userName: 'Bipi',
+    favoriteMovie: ['Hustle', 'The Man from Toronto']
+  }
+];
 
 let topMovies =
   [
