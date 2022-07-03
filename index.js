@@ -157,8 +157,6 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.use(bodyParser.json());
-app.use(methodOverride());
 
 app.use((error, request, response, next) => {
   console.error(error.stack);
