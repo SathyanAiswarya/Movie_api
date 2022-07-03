@@ -3,6 +3,7 @@ const express = require('express'),
   morgan = require('morgan'),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override');
+  uuid = require('uuid');
 
 
 let topMovies =
