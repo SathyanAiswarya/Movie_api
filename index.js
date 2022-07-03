@@ -152,7 +152,6 @@ app.get('/movies', (request, response) => {
   response.status(200).json(topMovies);
 });
 
-app.use('/', express.static('public'));
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -164,6 +163,11 @@ app.use(methodOverride());
 app.use((error, request, response, next) => {
   console.error(error.stack);
   response.status(500).send('Something broke!');
+app.get('/documentation', (request, response) => {                  
+  response.sendFile('public/documentation.html', { root: __dirname });
+});
+app.get('/documentation/style.css', (request, response) => {                  
+  response.sendFile('public/style.css', { root: __dirname });
 });
 
 app.listen(8080, () => {
