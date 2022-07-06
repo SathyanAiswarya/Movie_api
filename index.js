@@ -280,14 +280,8 @@ app.delete('/users/:id', (request, response) => {
     response.status(404).send('Search result not found');
   }
 });
-
-app.get('/documentation', (request, response) => {                  
-  response.sendFile('public/documentation.html', { root: __dirname });
-});
-app.get('/documentation/style.css', (request, response) => {                  
-  response.sendFile('public/style.css', { root: __dirname });
-});
 app.use(morgan('common'));
+app.use(express.static('public'));
 
 app.listen(8080, () => {
   console.log('Your app is listening on port 8080.');
