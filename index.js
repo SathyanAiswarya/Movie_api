@@ -246,12 +246,14 @@ app.post('/users/:username/movies/:movietitle', (request, response) => {
 
 app.delete('/users/:username/movies/:movietitle', (request, response) => {
   const requestedMovieTitle = request.params.movietitle;
+  const requestedUsername = request.params.username;
   const user = users.find((user) => {
     return user.userName == requestedUsername
   });
   if (user && user.favoriteMovie.includes(requestedMovieTitle)) {
+
     user.favoriteMovie = user.favoriteMovie.filter((title) => title != requestedMovieTitle);
-   response.status(200).send(`${requestedMovieTitle} has been removed from ${user.userName}`)
+    response.status(200).send(`${requestedMovieTitle} has been removed from ${user.userName}`)
   }
   else {
     response.status(400).send('No Results')
