@@ -142,7 +142,7 @@ let topMovies =
     }
   ];
 
-// app.use(morgan('common'));
+
 
 app.get('/', (request, response) => {
   response.send('Welcome to MyFlix');
@@ -287,6 +287,7 @@ app.get('/documentation', (request, response) => {
 app.get('/documentation/style.css', (request, response) => {                  
   response.sendFile('public/style.css', { root: __dirname });
 });
+app.use(morgan('common'));
 
 app.listen(8080, () => {
   console.log('Your app is listening on port 8080.');
