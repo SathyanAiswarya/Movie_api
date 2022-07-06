@@ -244,14 +244,12 @@ app.post('/users/:username/movies/:movietitle', (request, response) => {
 
 //------------------ Allow users to remove a movie from their list of favorites--------
 
-app.delete('/users/:id/:movietitle', (request, response) => {
+app.delete('/users/:username/movies/:movietitle', (request, response) => {
   const requestedMovieTitle = request.params.movietitle;
-  const requestedUserId = request.params.id;
   const user = users.find((user) => {
-    return user.id == requestedUserId
+    return user.userName == requestedUsername
   });
   if (user && user.favoriteMovie.includes(requestedMovieTitle)) {
-    
     user.favoriteMovie = user.favoriteMovie.filter((title) => title != requestedMovieTitle);
    response.status(200).send(`${requestedMovieTitle} has been removed from ${user.userName}`)
   }
