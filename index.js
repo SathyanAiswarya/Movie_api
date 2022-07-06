@@ -182,7 +182,7 @@ app.get('/movies/genre/:genre', (request, response) => {
 
 //-------------Return data about a director ---------------------------
 
-app.get('/movies/director/:nameofthedirector', (request, response) => {
+app.get('/movies/director/:director', (request, response) => {
   const requestedDirectorName = request.params.nameofthedirector;
   const directorName = topMovies.find((movie) => {
     return movie.director.name == requestedDirectorName
