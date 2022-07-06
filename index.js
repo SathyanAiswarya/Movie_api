@@ -226,15 +226,15 @@ app.put('/users/:id', (request, response) => {
 
 //-------------------------------------Allow users to add a movie to their list of favorites ------
 
-app.post('/users/:username', (request, response) => {
+app.post('/users/:username/movies/:movietitle', (request, response) => {
   const requestedUserName = request.params.username;
-  const updatedMovieList = request.body;
+  const requestedMovieTitleToAdd = request.params.movietitle;
   const user = users.find((user) => {
     return user.userName == requestedUserName
   });
   if (user) {
-    user.favoriteMovie.push(updatedMovieList);
-    response.status(200).send(updatedMovieList.favoriteMovie + ' ' + 'has been added to ' + user.userName)
+    user.favoriteMovie.push(requestedMovieTitleToAdd);
+    response.status(200).send(requestedMovieTitleToAdd + ' ' + 'has been added to ' + user.userName)
   }
   else {
     response.status(400).send('No Results')
