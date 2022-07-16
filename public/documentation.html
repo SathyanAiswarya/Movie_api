@@ -33,22 +33,52 @@
                             director) </td>
                         <td class="restapitable_item"> GET </td>
                         <td class="restapitable_item"> - </td>
-                        <td class="restapitable_item"> JSON </td>
+                        <td class="restapitable_item"> JSON : 
+                            {
+                                "Genre": {
+                                    "Name": ,
+                                    "Definition": 
+                                },
+                                "Director": {
+                                    "Name": ,
+                                    "Bio": 
+                                    "Birth_year": 
+                                },
+                                "_id": ,
+                                "Name": ,
+                                "Description": 
+                            }
+                        </td>
                     </tr>
                     <tr>
                         <td class="restapitable_item"> 2 </td>
                         <td class="restapitable_item"> Return data about a single movie by title to the user </td>
-                        <td class="restapitable_item"> /movies/:name </td>
+                        <td class="restapitable_item"> '/movies/:Moviename' </td>
                         <td class="restapitable_item"> It will return all the details about the requested Movie </td>
                         <td class="restapitable_item"> GET </td>
                         <td class="restapitable_item"> - </td>
-                        <td class="restapitable_item"> JSON </td>
+                        <td class="restapitable_item"> JSON :
+                            {
+                                "Genre": {
+                                    "Name": ,
+                                    "Definition": 
+                                },
+                                "Director": {
+                                    "Name": ,
+                                    "Bio": 
+                                    "Birth_year": 
+                                },
+                                "_id": ,
+                                "Name": ,
+                                "Description": 
+                            }
+                        </td>
 
                     </tr>
                     <tr>
                         <td class="restapitable_item"> 3 </td>
                         <td class="restapitable_item"> Return data about a genre by title </td>
-                        <td class="restapitable_item"> /movies/genre/:genre </td>
+                        <td class="restapitable_item"> '/movies/genre/:genre' </td>
                         <td class="restapitable_item"> It will return the description about the requested genre </td>
                         <td class="restapitable_item"> GET </td>
                         <td class="restapitable_item"> - </td>
@@ -58,7 +88,7 @@
                     <tr>
                         <td class="restapitable_item"> 4 </td>
                         <td class="restapitable_item"> Return data about a director </td>
-                        <td class="restapitable_item"> /movies/director/:director </td>
+                        <td class="restapitable_item"> '/movies/director/:director' </td>
                         <td class="restapitable_item"> It will return all the details about the requested director </td>
                         <td class="restapitable_item"> GET </td>
                         <td class="restapitable_item"> - </td>
@@ -68,66 +98,98 @@
                     <tr>
                         <td class="restapitable_item"> 5 </td>
                         <td class="restapitable_item"> Allow new users to register </td>
-                        <td class="restapitable_item"> /users </td>
+                        <td class="restapitable_item"> '/users' </td>
                         <td class="restapitable_item"> Update the details of a new user </td>
                         <td class="restapitable_item"> POST </td>
                         <td class="restapitable_item"> JSON :
-                            { "name" : "Mark", "favoritemovie":"Spiderhead"}
-                        </td>
-                        <td class="restapitable_item"> JSON
                             {
-                            "name": "Mark",
-                            "favoritemovie": "Spiderhead",
-                            "id": "857b9167-04d8-42dd-92f2-ec826ea738b6"
+                                "Username": ,
+                                "Email": ,
+                                "Password": ,
+                                "Birthday":
+                        
+                    }
+                        </td>
+                        <td class="restapitable_item"> JSON :
+                            {
+                                "Username": ,
+                                "Email": ,
+                                "Password": ,
+                                "Birthday": ,
+                                "FavoriteMovies": [],
+                                "_id":,
+                                "__v": 0
                             }
                         </td>
                     </tr>
                     <tr>
                         <td class="restapitable_item"> 6 </td>
                         <td class="restapitable_item"> Allow users to update their user info</td>
-                        <td class="restapitable_item"> /users/:id </td>
+                        <td class="restapitable_item"> '/users/:Username' </td>
                         <td class="restapitable_item"> It will update the user data of the user of the requested id
                         </td>
                         <td class="restapitable_item"> PUT </td>
                         <td class="restapitable_item"> JSON :
                             { "name" : "Aiswarya Sathyan" }</td>
-                        <td class="restapitable_item"> JSON
+                        <td class="restapitable_item"> JSON :
                             {
-                            "id": 1,
-                            "userName": "Aiswarya Sathyan",
-                            "favoriteMovie": [
-                            "Blasted"
-                            ]
+                                "_id": ,
+                                "Username": ,
+                                "Email": ,
+                                "Password":,
+                                "Birthday": ,
+                                "FavoriteMovies": [],
+                                "__v": 0
                             }
                         </td>
                     </tr>
                     <tr>
                         <td class="restapitable_item"> 7 </td>
                         <td class="restapitable_item"> To add a movie to their list of favorites </td>
-                        <td class="restapitable_item"> /users/:username/movies/:movietitle </td>
+                        <td class="restapitable_item"> '/users/:Username/movies/:MovieID'</td>
                         <td class="restapitable_item"> Allow users to add their favorite movie to the list </td>
                         <td class="restapitable_item"> POST </td>
                         <td class="restapitable_item"> - </td>
-                        <td class="restapitable_item"> response text </td>
+                        <td class="restapitable_item"> JSON :
+                            {
+                                "_id": ,
+                                "Username": ,
+                                "Email": ,
+                                "Password":,
+                                "Birthday": ,
+                                "FavoriteMovies": [],
+                                "__v": 0
+                            }
+                        </td>
                     </tr>
                     <tr>
                         <td class="restapitable_item"> 8 </td>
                         <td class="restapitable_item"> To delete a movie to their list of favorites </td>
-                        <td class="restapitable_item"> /users/:username/movies/:movietitle </td>
+                        <td class="restapitable_item"> '/users/:Username/movies/:MovieID' </td>
                         <td class="restapitable_item"> Allow users to delete their favorite movie from the list </td>
                         <td class="restapitable_item"> DELETE </td>
                         <td class="restapitable_item"> - </td>
-                        <td class="restapitable_item"> Response text </td>
+                        <td class="restapitable_item"> JSON :
+                            {
+                                "_id": ,
+                                "Username": ,
+                                "Email": ,
+                                "Password":,
+                                "Birthday": ,
+                                "FavoriteMovies": [],
+                                "__v": 0
+                            }
+                         </td>
 
                     </tr>
                     <tr>
                         <td class="restapitable_item"> 9 </td>
                         <td class="restapitable_item"> Existing users to deregister </td>
-                        <td class="restapitable_item"> /users/:id </td>
+                        <td class="restapitable_item"> '/users/:Username' </td>
                         <td class="restapitable_item"> Allowing a user to deregister </td>
                         <td class="restapitable_item"> DELETE </td>
                         <td class="restapitable_item"> - </td>
-                        <td class="restapitable_item"> response text </td>
+                        <td class="restapitable_item"> response text confirming the user is deregister </td>
 
                     </tr>
                 </tbody>
