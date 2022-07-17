@@ -72,7 +72,7 @@ app.get('/movies/:Moviename', passport.authenticate('jwt', { session: false }), 
       response.json(movie);
     })
     .catch((err) => {
-      response.status(404).send("Result not Found", err);
+      response.status(404).send("Search result not Found", err);
     });
 
 });
@@ -86,7 +86,7 @@ app.get('/movies/genre/:Genre',passport.authenticate('jwt', { session: false }),
       response.json(movie.Genre);
     })
     .catch((err) => {
-      response.status(404).send("Result not Found", err);
+      response.status(404).send("Search result not Found", err);
     });
 });
 
@@ -97,7 +97,7 @@ app.get('/movies/director/:Director', passport.authenticate('jwt', { session: fa
       response.json(movie.Director);
     })
     .catch((err) => {
-      response.status(404).send("Result not Found", err);
+      response.status(404).send("Search result not Found", err);
     });
 });
 
@@ -152,7 +152,6 @@ app.put('/users/:Username',passport.authenticate('jwt', { session: false }), (re
     (err, updatedUser) => {
       if (err) {
 
-        response.status(404).send("Result not Found", err);
       } else {
         response.json(updatedUser);
       }
@@ -173,7 +172,7 @@ app.post('/users/:Username/movies/:MovieID',passport.authenticate('jwt', { sessi
     { new: true },
     (err, updatedUser) => {
       if (err) {
-        response.status(404).send("Result not Found");
+        response.status(404).send("An error has occurred while adding a movie from user's favorites");
       } else {
         response.json(updatedUser);
       }
@@ -193,7 +192,7 @@ app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { se
     { new: true },
     (err, updatedUser) => {
       if (err) {
-        response.status(404).send("Result not Found");
+        response.status(404).send("An error has occurred while removing a movie from user's favorites");
       } else {
         response.json(updatedUser);
       }
@@ -204,7 +203,7 @@ app.delete('/users/:Username',passport.authenticate('jwt', { session: false }), 
   Users.findOneAndRemove({ Username: request.params.Username })
     .then((user) => {
       if (!user) {
-        response.status(404).send("Result not Found");
+        response.status(404).send("An error has occurred while deleting the user account");
       } else {
         response.status(200).send(request.params.Username + ' was deleted.');
       }
