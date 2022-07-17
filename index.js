@@ -18,6 +18,11 @@ mongoose.connect('mongodb://localhost:27017/myFlixDB', {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+let auth = require('./auth')(app); // auth.js
+
+const passport = require('passport');
+require('./passport'); //  import passport
+
 app.use(morgan('common'));
 
 app.get("/", (request, response) => {
