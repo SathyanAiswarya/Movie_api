@@ -81,7 +81,7 @@ app.get('/movies/:Moviename', passport.authenticate('jwt', { session: false }), 
 
 app.get('/movies/genre/:Genre',passport.authenticate('jwt', { session: false }), (request, response) => {
   console.log("abc", request.params.genre)
-  Movies.find({ 'Genre.Name': request.params.genre })
+  Movies.findOne({ 'Genre.Name': request.params.genre })
     .then((movie) => {
       response.json(movie.Genre);
     })
@@ -91,8 +91,8 @@ app.get('/movies/genre/:Genre',passport.authenticate('jwt', { session: false }),
 });
 
 //Return data about a director
-  Movies.find({ 'Director.Name': request.params.director })
 app.get('/movies/director/:Director', passport.authenticate('jwt', { session: false }),(request, response) => {
+  Movies.findOne({ 'Director.Name': request.params.director })
     .then((movie) => {
       response.json(movie.Director);
     })
@@ -152,6 +152,7 @@ app.put('/users/:Username',passport.authenticate('jwt', { session: false }), (re
     (err, updatedUser) => {
       if (err) {
 
+        response.status(404).send("An error has occurred and the error is : ", err);
       } else {
         response.json(updatedUser);
       }
@@ -181,8 +182,8 @@ app.post('/users/:Username/movies/:MovieID',passport.authenticate('jwt', { sessi
 
 //Allow users to remove a movie from their list of favorites
 
-  Users.findOneAndRemove(
 app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (request, response) => {
+  Users.findOneAndUpdate(
     {
       Username: request.params.Username
     },
