@@ -32,22 +32,8 @@
                         <td class="restapitable_item"> Return all the movies with their details(description, genre and
                             director) </td>
                         <td class="restapitable_item"> GET </td>
-                        <td class="restapitable_item"> - </td>
-                        <td class="restapitable_item"> JSON : 
-                            {
-                                "Genre": {
-                                    "Name": ,
-                                    "Definition": 
-                                },
-                                "Director": {
-                                    "Name": ,
-                                    "Bio": 
-                                    "Birth_year": 
-                                },
-                                "_id": ,
-                                "Name": ,
-                                "Description": 
-                            }
+                        <td class="restapitable_item"> none </td>
+                        <td class="restapitable_item"> An array of movie objects, check "get a single movie object" response to learn how these object look like
                         </td>
                     </tr>
                     <tr>
@@ -56,21 +42,21 @@
                         <td class="restapitable_item"> '/movies/:Moviename' </td>
                         <td class="restapitable_item"> It will return all the details about the requested Movie </td>
                         <td class="restapitable_item"> GET </td>
-                        <td class="restapitable_item"> - </td>
+                        <td class="restapitable_item"> none </td>
                         <td class="restapitable_item"> JSON :
                             {
                                 "Genre": {
-                                    "Name": ,
-                                    "Definition": 
+                                    "Name": "Action",
+                                    "Definition": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. They can feature superheroes, martial arts, or exciting stunts. These high-octane films are more about the execution of the plot rather than the plot itself."
                                 },
                                 "Director": {
-                                    "Name": ,
-                                    "Bio": 
-                                    "Birth_year": 
+                                    "Name": "Patrick Hughes",
+                                    "Bio": "Patrick Hughes, born in Australia in 1978, has held various positions in the film business since 2000. Among other things as an editor, screenwriter or producer, initially for short films such as The Director or The Lighter , since 2010 also for the big screen.",
+                                    "Birth_year": 1978
                                 },
-                                "_id": ,
-                                "Name": ,
-                                "Description": 
+                                "_id": "62cb30cce66572698ebc71d9",
+                                "Name": "The Man from Toronto",
+                                "Description": "A case of mistaken identity forced a bumbling entrepreneur to team up with a notorious assassin known as The man from Toronto in hopes of staying alive."
                             }
                         </td>
 
@@ -78,7 +64,7 @@
                     <tr>
                         <td class="restapitable_item"> 3 </td>
                         <td class="restapitable_item"> Return data about a genre by title </td>
-                        <td class="restapitable_item"> '/movies/genre/:genre' </td>
+                        <td class="restapitable_item"> '/movies/genre/:Genre' </td>
                         <td class="restapitable_item"> It will return the description about the requested genre </td>
                         <td class="restapitable_item"> GET </td>
                         <td class="restapitable_item"> - </td>
@@ -88,7 +74,7 @@
                     <tr>
                         <td class="restapitable_item"> 4 </td>
                         <td class="restapitable_item"> Return data about a director </td>
-                        <td class="restapitable_item"> '/movies/director/:director' </td>
+                        <td class="restapitable_item"> '/movies/director/:Director' </td>
                         <td class="restapitable_item"> It will return all the details about the requested director </td>
                         <td class="restapitable_item"> GET </td>
                         <td class="restapitable_item"> - </td>
@@ -103,21 +89,20 @@
                         <td class="restapitable_item"> POST </td>
                         <td class="restapitable_item"> JSON :
                             {
-                                "Username": ,
-                                "Email": ,
-                                "Password": ,
-                                "Birthday":
-                        
-                    }
+                                "Username": "Thomas",
+                                "Email": "thomas@gmail.com",
+                                "Password": "qwerty",
+                                "Birthday": "05/07/2002"
+                            }
                         </td>
                         <td class="restapitable_item"> JSON :
                             {
-                                "Username": ,
-                                "Email": ,
-                                "Password": ,
-                                "Birthday": ,
+                                "Username": "Thomas",
+                                "Email": "thomas@gmail.com",
+                                "Password": "qwerty",
+                                "Birthday": "2002-05-06T22:00:00.000Z",
                                 "FavoriteMovies": [],
-                                "_id":,
+                                "_id": "62d47946ab690131c43c3490",
                                 "__v": 0
                             }
                         </td>
@@ -130,14 +115,17 @@
                         </td>
                         <td class="restapitable_item"> PUT </td>
                         <td class="restapitable_item"> JSON :
-                            { "name" : "Aiswarya Sathyan" }</td>
-                        <td class="restapitable_item"> JSON :
                             {
-                                "_id": ,
-                                "Username": ,
-                                "Email": ,
-                                "Password":,
-                                "Birthday": ,
+                                "Email":"thomas123@gmail.com"
+                            }
+                        </td>
+                        <td class="restapitable_item"> 
+                            {
+                                "_id": "62d475efeae200c59959c014",
+                                "Username": "Thomas",
+                                "Email": "thomas123@gmail.com",
+                                "Password": "qwerty",
+                                "Birthday": "2002-05-06T22:00:00.000Z",
                                 "FavoriteMovies": [],
                                 "__v": 0
                             }
@@ -149,15 +137,17 @@
                         <td class="restapitable_item"> '/users/:Username/movies/:MovieID'</td>
                         <td class="restapitable_item"> Allow users to add their favorite movie to the list </td>
                         <td class="restapitable_item"> POST </td>
-                        <td class="restapitable_item"> - </td>
-                        <td class="restapitable_item"> JSON :
+                        <td class="restapitable_item"> none </td>
+                        <td class="restapitable_item"> 
                             {
-                                "_id": ,
-                                "Username": ,
-                                "Email": ,
-                                "Password":,
-                                "Birthday": ,
-                                "FavoriteMovies": [],
+                                "_id": "62d475efeae200c59959c014",
+                                "Username": "Thomas",
+                                "Email": "thomas123@gmail.com",
+                                "Password": "qwerty",
+                                "Birthday": "2002-05-06T22:00:00.000Z",
+                                "FavoriteMovies": [
+                                    "62cb3197e66572698ebc71dd"
+                                ],
                                 "__v": 0
                             }
                         </td>
@@ -168,14 +158,14 @@
                         <td class="restapitable_item"> '/users/:Username/movies/:MovieID' </td>
                         <td class="restapitable_item"> Allow users to delete their favorite movie from the list </td>
                         <td class="restapitable_item"> DELETE </td>
-                        <td class="restapitable_item"> - </td>
-                        <td class="restapitable_item"> JSON :
+                        <td class="restapitable_item"> none </td>
+                        <td class="restapitable_item"> 
                             {
-                                "_id": ,
-                                "Username": ,
-                                "Email": ,
-                                "Password":,
-                                "Birthday": ,
+                                "_id": "62d475efeae200c59959c014",
+                                "Username": "Thomas",
+                                "Email": "thomas123@gmail.com",
+                                "Password": "qwerty",
+                                "Birthday": "2002-05-06T22:00:00.000Z",
                                 "FavoriteMovies": [],
                                 "__v": 0
                             }
@@ -188,8 +178,8 @@
                         <td class="restapitable_item"> '/users/:Username' </td>
                         <td class="restapitable_item"> Allowing a user to deregister </td>
                         <td class="restapitable_item"> DELETE </td>
-                        <td class="restapitable_item"> - </td>
-                        <td class="restapitable_item"> response text confirming the user is deregister </td>
+                        <td class="restapitable_item"> none </td>
+                        <td class="restapitable_item"> response text confirming the user is deregister  : "Thomas was deleted".</td>
 
                     </tr>
                 </tbody>
