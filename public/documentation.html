@@ -9,7 +9,6 @@
 </head>
 
 <body>
-    <header>
         <h1> Documentation</h1>
         <div class="restapi_table">
             <table>
@@ -22,11 +21,40 @@
                         <th class="restapitable_item"> Method </th>
                         <th class="restapitable_item"> Format of request body data </th>
                         <th class="restapitable_item"> Format of response body data </th>
+                        <th class="restapitable_item"> Authentication </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="restapitable_item"> 1</td>
+                        <td class="restapitable_item"> User login </td>
+                        <td class="restapitable_item"> '/login' </td>
+                        <td class="restapitable_item"> USER login and will receive a JWT </td>
+                        <td class="restapitable_item"> POST </td>
+                        <td class="restapitable_item"> {
+                            "Username": "Thomas",
+                            "Password":"qwerty"
+                        } 
+                        </td>
+                        <td class="restapitable_item"> 
+                           <p> {
+                                "user": {
+                                    "_id": "62d47946ab690131c43c3490",
+                                    "Username": "Thomas",
+                                    "Email": "thomas@gmail.com",
+                                    "Password": "qwerty",
+                                    "Birthday": "2002-05-06T22:00:00.000Z",
+                                    "FavoriteMovies": [],
+                                    "__v": 0
+                                },
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmQ0N2YwZTRiYjg2ZGNjZTI2MDI4NjgiLCJVc2VybmFtZSI6IlRob21hcyIsIkVtYWlsIjoidGhvbWFzQGdtYWlsLmNvbSIsIlBhc3N3b3JkIjoicXdlcnR5IiwiQmlydGhkYXkiOiIyMDAyLTA1LTA2VDIyOjAwOjAwLjAwMFoiLCJGYXZvcml0ZU1vdmllcyI6W10sIl9fdiI6MCwiaWF0IjoxNjU4MzQ1MjkwLCJleHAiOjE2NTg5NTAwOTAsInN1YiI6IlRob21hcyJ9.niN9T3PmDmMu8UmBY7zbhskHg3fjXEVQRdI66PwbtzI"
+                            } </p>
+                        </td>
+                        <td class="restapitable_item"> Basic HTTP Authentication </td> -->
+                    </tr>
+                    
+                    <tr>
+                        <td class="restapitable_item"> 2</td>
                         <td class="restapitable_item"> All movies to user </td>
                         <td class="restapitable_item"> /movies </td>
                         <td class="restapitable_item"> Return all the movies with their details(description, genre and
@@ -35,9 +63,10 @@
                         <td class="restapitable_item"> none </td>
                         <td class="restapitable_item"> An array of movie objects, check "get a single movie object" response to learn how these object look like
                         </td>
+                        <td class="restapitable_item"> JWT (Bearer) </td>
                     </tr>
                     <tr>
-                        <td class="restapitable_item"> 2 </td>
+                        <td class="restapitable_item"> 3 </td>
                         <td class="restapitable_item"> Return data about a single movie by title to the user </td>
                         <td class="restapitable_item"> '/movies/:Moviename' </td>
                         <td class="restapitable_item"> It will return all the details about the requested Movie </td>
@@ -59,30 +88,44 @@
                                 "Description": "A case of mistaken identity forced a bumbling entrepreneur to team up with a notorious assassin known as The man from Toronto in hopes of staying alive."
                             }
                         </td>
+                        <td class="restapitable_item"> JWT (Bearer) </td>
 
                     </tr>
                     <tr>
-                        <td class="restapitable_item"> 3 </td>
+                        <td class="restapitable_item"> 4 </td>
                         <td class="restapitable_item"> Return data about a genre by title </td>
                         <td class="restapitable_item"> '/movies/genre/:Genre' </td>
                         <td class="restapitable_item"> It will return the description about the requested genre </td>
                         <td class="restapitable_item"> GET </td>
                         <td class="restapitable_item"> none</td>
-                        <td class="restapitable_item"> JSON </td>
+                        <td class="restapitable_item"> 
+                            {
+                                "Name": "Action",
+                                "Definition": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. They can feature superheroes, martial arts, or exciting stunts. These high-octane films are more about the execution of the plot rather than the plot itself."
+                            }
+                         </td>
+                        <td class="restapitable_item"> JWT (Bearer) </td>
 
                     </tr>
                     <tr>
-                        <td class="restapitable_item"> 4 </td>
+                        <td class="restapitable_item"> 5 </td>
                         <td class="restapitable_item"> Return data about a director </td>
                         <td class="restapitable_item"> '/movies/director/:Director' </td>
                         <td class="restapitable_item"> It will return all the details about the requested director </td>
                         <td class="restapitable_item"> GET </td>
                         <td class="restapitable_item"> none</td>
-                        <td class="restapitable_item"> JSON </td>
+                        <td class="restapitable_item"> 
+                            {
+                                "Name": "Patrick Hughes",
+                                "Bio": "Patrick Hughes, born in Australia in 1978, has held various positions in the film business since 2000. Among other things as an editor, screenwriter or producer, initially for short films such as The Director or The Lighter , since 2010 also for the big screen.",
+                                "Birth_year": 1978
+                            }
+                         </td>
+                        <td class="restapitable_item"> JWT (Bearer) </td>
 
                     </tr>
                     <tr>
-                        <td class="restapitable_item"> 5 </td>
+                        <td class="restapitable_item"> 6 </td>
                         <td class="restapitable_item"> Allow new users to register </td>
                         <td class="restapitable_item"> '/users' </td>
                         <td class="restapitable_item"> Update the details of a new user </td>
@@ -106,12 +149,13 @@
                                 "__v": 0
                             }
                         </td>
+                        <td class="restapitable_item"> none </td>
                     </tr>
                     <tr>
-                        <td class="restapitable_item"> 6 </td>
+                        <td class="restapitable_item"> 7 </td>
                         <td class="restapitable_item"> Allow users to update their user info</td>
                         <td class="restapitable_item"> '/users/:Username' </td>
-                        <td class="restapitable_item"> It will update the user data of the user of the requested id
+                        <td class="restapitable_item"> It will update the user data of the user of the requested user
                         </td>
                         <td class="restapitable_item"> PUT </td>
                         <td class="restapitable_item"> JSON :
@@ -130,9 +174,10 @@
                                 "__v": 0
                             }
                         </td>
+                        <td class="restapitable_item"> JWT (Bearer) </td>
                     </tr>
                     <tr>
-                        <td class="restapitable_item"> 7 </td>
+                        <td class="restapitable_item"> 8 </td>
                         <td class="restapitable_item"> To add a movie to their list of favorites </td>
                         <td class="restapitable_item"> '/users/:Username/movies/:MovieID'</td>
                         <td class="restapitable_item"> Allow users to add their favorite movie to the list </td>
@@ -151,9 +196,10 @@
                                 "__v": 0
                             }
                         </td>
+                        <td class="restapitable_item"> JWT (Bearer) </td>
                     </tr>
                     <tr>
-                        <td class="restapitable_item"> 8 </td>
+                        <td class="restapitable_item"> 9 </td>
                         <td class="restapitable_item"> To delete a movie to their list of favorites </td>
                         <td class="restapitable_item"> '/users/:Username/movies/:MovieID' </td>
                         <td class="restapitable_item"> Allow users to delete their favorite movie from the list </td>
@@ -170,22 +216,23 @@
                                 "__v": 0
                             }
                          </td>
+                         <td class="restapitable_item"> JWT (Bearer) </td>
 
                     </tr>
                     <tr>
-                        <td class="restapitable_item"> 9 </td>
+                        <td class="restapitable_item"> 10 </td>
                         <td class="restapitable_item"> Existing users to deregister </td>
                         <td class="restapitable_item"> '/users/:Username' </td>
                         <td class="restapitable_item"> Allowing a user to deregister </td>
                         <td class="restapitable_item"> DELETE </td>
                         <td class="restapitable_item"> none </td>
                         <td class="restapitable_item"> response text confirming the user is deregister  : "Thomas was deleted".</td>
+                        <td class="restapitable_item"> JWT (Bearer) </td>
 
                     </tr>
                 </tbody>
             </table>
         </div>
-    </header>
     <script src="../js/test.js"></script>
 </body>
 
