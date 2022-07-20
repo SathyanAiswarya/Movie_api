@@ -17,9 +17,13 @@ td {
 table {
     border-collapse: collapse;
   }
+p{
+  word-break: break-all;
+}
 .restapi_table {
     margin: 15px;
     padding: 10px;
     display: flex;
-    justify-content: center
+    justify-content: center;
+    
 }
