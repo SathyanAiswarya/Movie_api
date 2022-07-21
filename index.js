@@ -7,8 +7,12 @@ const express = require('express'),
   uuid = require('uuid'),
   mongoose = require('mongoose'),
   Models = require('./models'),
+  bcrypt = require('bcrypt'),
   Movies = Models.Movie,
   Users = Models.User;
+
+  const { check, validationResult } = require('express-validator');// for validation
+  
 
 mongoose.connect('mongodb://localhost:27017/myFlixDB', {
   useNewUrlParser: true,
@@ -17,6 +21,9 @@ mongoose.connect('mongodb://localhost:27017/myFlixDB', {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+const cors = require('cors');
+app.use(cors());
 
 let auth = require('./auth')(app); // auth.js
 
