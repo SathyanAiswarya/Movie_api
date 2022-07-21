@@ -156,7 +156,21 @@ app.post('/users',
 
 //Allow users to update their user info 
 
-app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (request, response) => {
+app.put('/users/:Username', passport.authenticate('jwt', { session: false }), 
+// [
+//   check('Username', 'Username is required').isLength({min: 5}),
+//   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+//   check('Password', 'Password is required').not().isEmpty(),
+//   check('Email', 'Email does not appear to be valid').isEmail(),
+//   check('Birthday','Birthday needs to be a valid date').isDate({format: 'DD-MM-YYYY'})
+// ], 
+(request, response) => 
+{
+  // let errors = validationResult(request);
+
+  // if (!errors.isEmpty()) {
+  //   return response.status(422).json({ errors: errors.array() });
+  // }
   Users.findOneAndUpdate(
     {
       Username: request.params.Username
