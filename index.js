@@ -110,7 +110,21 @@ app.get('/movies/director/:Director', passport.authenticate('jwt', { session: fa
 //Allow new users to register
 
 
-app.post('/users', (request, response) => {
+app.post('/users', 
+[
+  check('Username', 'Username is required').isLength({min: 5}),
+  check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+  check('Password', 'Password is required').not().isEmpty(),
+  check('Email', 'Email does not appear to be valid').isEmail(),
+  check('Birthday','Birthday needs to be a valid date').isDate({format: 'DD-MM-YYYY'})
+], (request, response) => 
+{
+
+// check the validation object for errors
+  let errors = validationResult(request);
+
+  if (!errors.isEmpty()) {
+    return response.status(422).json({ errors: errors.array() });
   Users.findOne({ Username: request.body.Username })
     .then((user) => {
       if (user) {
