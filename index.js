@@ -125,6 +125,8 @@ app.post('/users',
 
   if (!errors.isEmpty()) {
     return response.status(422).json({ errors: errors.array() });
+  }
+  let hashedPassword = Users.hashPassword(request.body.Password);
   Users.findOne({ Username: request.body.Username })
     .then((user) => {
       if (user) {
@@ -135,7 +137,7 @@ app.post('/users',
         Users.create({
           Username: request.body.Username,
           Email: request.body.Email,
-          Password: request.body.Password,
+          Password: hashedPassword,
           Birthday: request.body.Birthday
         })
           .then((user) => {
