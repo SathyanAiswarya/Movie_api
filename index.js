@@ -123,7 +123,7 @@ app.post('/users',
   if (!errors.isEmpty()) {
     return response.status(422).json({ errors: errors.array() });
   }
-  let hashedPassword = Users.hashPassword(request.body.Password);
+  let hashedPassword = Users.hashPassword(request.body.Password); //hashed password
   Users.findOne({ Username: request.body.Username })
     .then((user) => {
       if (user) {
@@ -168,6 +168,7 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }),
   // if (!errors.isEmpty()) {
   //   return response.status(422).json({ errors: errors.array() });
   // }
+  let hashedPassword = Users.hashPassword(request.body.Password); //hashed password
   Users.findOneAndUpdate(
     {
       Username: request.params.Username
@@ -177,7 +178,7 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }),
       {
         Username: request.body.Username,
         Email: request.body.Email,
-        Password: request.body.Password,
+        Password: hashedPassword, 
         Birthday: request.body.Birthday
       }
     },
