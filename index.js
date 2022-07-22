@@ -13,8 +13,7 @@ const express = require('express'),
 
   const { check, validationResult } = require('express-validator');// for validation
   
-
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true }); //environment variable for connection database. 
+mongoose.connect(process.env.CONNECTION_URI || 'mongodb://localhost:27017/myFlixDB' , { useNewUrlParser: true, useUnifiedTopology: true }); //environment variable for connection database. 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
